@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import torch
 import torch.nn as nn
-from model.blocks import TransformerEncoder, Tokenizer
+from blocks import TransformerEncoder, Tokenizer
 
 class Extractor(nn.Module):
     def __init__(self,
