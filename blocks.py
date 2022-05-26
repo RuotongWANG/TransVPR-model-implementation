@@ -61,20 +61,6 @@ class POOL(nn.Module):
             features.append(feature)
         x = torch.cat(features, -1) # (B,C*L)
         return x, mask   
-    
-class POOLsimple(nn.Module): 
-    def __init__(self, embedding_dim):
-        super().__init__()
-        self.embedding_dim = embedding_dim
-        self.fc = nn.Sequential(L2Norm(dim=-1),
-                                 nn.Linear(embedding_dim, embedding_dim, bias=True), 
-                                 L2Norm(dim=-1))
-        
-    def forward(self, x): #(B, L_all, 1+14*14, C)
-        
-        x = x[:, -1, 0, :] #(B, L, 1+14*14, C) => (B,C)
-        x = self.fc(x)
-        return x
 
 
 class Tokenizer(nn.Module):
