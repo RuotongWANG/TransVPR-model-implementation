@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*
 import numpy as np
+from PIL import Image
 import torch
 import torchvision.transforms  as transforms
 
@@ -31,5 +32,5 @@ if __name__ == "__main__":
     model.load_state_dict(checkpoint)
     
     patch_feat = model(input)
-    global_feat, attention_mask = model.pool(feature)  
+    global_feat, attention_mask = model.pool(patch_feat)  
     
