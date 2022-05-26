@@ -33,20 +33,3 @@ if __name__ == "__main__":
     patch_feat = model(input)
     global_feat, attention_mask = model.pool(feature)  
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
