@@ -58,9 +58,8 @@ def match_batch_tensor(fm1, fm2, mask1, mask2, img_size, s):
     mask2: (N,l)
     '''
     M = torch.matmul(fm2, fm1.T) # (N,l,l)
-    if mask1 and mask2:
-        M[:,:,mask1 <= s] = 0
-        M[mask2 <= s,:] = 0
+    M[:,:,mask1 <= s] = 0
+    M[mask2 <= s,:] = 0
     max1 = torch.argmax(M, dim=1) #(N,l)
     max2 = torch.argmax(M, dim=2) #(N,l)
     m = max2[torch.arange(M.shape[0]).reshape((-1,1)), max1] #(N, l)
